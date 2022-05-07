@@ -1,1 +1,15 @@
-GET http://localhost:3000
+@baseUrl = http://localhost:3000
+
+###
+GET {{baseUrl}}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": "User Name"
+}
+
+###
+DELETE {{baseUrl}}
