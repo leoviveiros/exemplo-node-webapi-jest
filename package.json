@@ -6,13 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest"
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "watch": "set NODE_OPTIONS=--experimental-vm-modules && jest --watchAll"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "supertest": "6.2"
   }
 }
