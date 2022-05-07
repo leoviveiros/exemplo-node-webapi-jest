@@ -8,6 +8,10 @@ function jsonResponse(data, response) {
     return response.end(JSON.stringify(data));
 }
 
+function getHandler(request, response) {
+    return jsonResponse([...Database.values()], response);
+}
+
 async function postHandler(request, response) {
     const body = JSON.parse(await once(request, 'data'));
 
@@ -19,11 +23,16 @@ async function postHandler(request, response) {
     return jsonResponse({ ok: true }, response);
 }
 
+function deleteHandler(request, response) {
+    Database.clear();
+    return jsonResponse({ ok: true }, response);
+}
+
 async function handler(request, response) {
     const { method } = request;
 
     if (method === 'GET') {
-        return jsonResponse([...Database.values()], response);
+        return getHandler(request, response);
     }
 
     if (method === 'POST') {
@@ -31,7 +40,7 @@ async function handler(request, response) {
     }
 
     if (method === 'DELETE') {
-        return jsonResponse({ ok: true }, response);
+        return deleteHandler(request, response);
     }
 }
 

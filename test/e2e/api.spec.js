@@ -21,5 +21,11 @@ describe('API E2E Test Suite', () => {
         expect(response.text).toStrictEqual(expectedResponse);
     })
 
-    test.todo('DELETE / - should save clear database and return ok')
+    test('DELETE / - should save clear database and return ok', async () => {
+        const response = await supertest(Server).delete('/');
+
+        const expectedResponse = JSON.stringify({ ok: true})
+
+        expect(response.text).toStrictEqual(expectedResponse);
+    })
 })
