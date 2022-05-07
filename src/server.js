@@ -16,8 +16,6 @@ async function postHandler(request, response) {
 
     Database.set(id, data);
 
-    console.log(data);
-
     return jsonResponse({ ok: true }, response);
 }
 
